@@ -9,7 +9,7 @@
   width: 100%;
   min-height: 100vh;
   background: #020b29;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 .hero-section {
@@ -1798,4 +1798,252 @@
 }
 
 
+/* =========================================================
+   FINAL RESPONSIVE FIXES + SCROLL REVEAL
+   ========================================================= */
 
+/* Prevent layout overflow without clipping vertical content */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  overflow-x: clip;
+}
+
+.home-page {
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.home-page img {
+  display: block;
+  max-width: 100%;
+}
+
+.home-page a,
+.home-page button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-page a:focus-visible,
+.home-page button:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 4px;
+}
+
+/* Keep section containers centered and prevent children from forcing overflow */
+.hero-container,
+.hero-stats,
+.courses-container,
+.internship-card,
+.offer-card,
+.advantages-container,
+.teachers-container,
+.consultation-card {
+  min-width: 0;
+}
+
+.hero-content,
+.course-info,
+.internship-content,
+.offer-content {
+  min-width: 0;
+}
+
+/* Reveal elements when they enter the viewport */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 650ms ease,
+    transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slightly stagger the repeated cards */
+.course-card.reveal-on-scroll,
+.advantage-card.reveal-on-scroll,
+.teacher-card.reveal-on-scroll,
+.stat-card.reveal-on-scroll {
+  transition-delay: 70ms;
+}
+
+/* Avoid motion for visitors who request reduced animation */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+    will-change: auto;
+  }
+
+  .technology-track {
+    animation: none;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero-container,
+  .hero-stats,
+  .courses-container,
+  .internship-card,
+  .offer-card,
+  .advantages-container,
+  .teachers-container,
+  .consultation-card {
+    max-width: 100%;
+  }
+
+  .hero-stats {
+    width: calc(100% - 50px);
+  }
+
+  .teachers-grid {
+    gap: 22px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .hero-container {
+    width: 100%;
+  }
+
+  .hero-stats {
+    width: calc(100% - 40px);
+    gap: 12px;
+  }
+
+  .stat-card {
+    width: 100%;
+    padding: 22px;
+  }
+
+  .courses-container,
+  .internship-card,
+  .offer-card,
+  .advantages-container,
+  .teachers-container {
+    width: calc(100% - 32px);
+  }
+
+  .courses-header,
+  .teachers-header {
+    gap: 16px;
+  }
+
+  .courses-header h2,
+  .teachers-header h2,
+  .advantages-header h2 {
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .course-card {
+    min-width: 0;
+  }
+
+  .course-info,
+  .course-info h3,
+  .course-info p {
+    overflow-wrap: anywhere;
+  }
+
+  .internship-features span,
+  .teacher-skills span {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .consultation-card {
+    width: calc(100% - 32px);
+    padding: 30px 20px;
+  }
+
+  .consultation-card h2 {
+    font-size: clamp(24px, 6vw, 34px);
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .hero-container {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-stats,
+  .courses-container,
+  .internship-card,
+  .offer-card,
+  .advantages-container,
+  .teachers-container,
+  .consultation-card {
+    width: calc(100% - 24px);
+  }
+
+  .course-card {
+    grid-template-columns: 34px minmax(0, 1fr) 18px;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .course-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+  }
+
+  .course-meta {
+    flex-wrap: wrap;
+  }
+
+  .meta-item strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* FIX: keep the course-card arrow at the top-right, not below the card */
+@media (max-width: 650px) {
+  .course-card {
+    position: relative;
+    grid-template-columns: 42px minmax(0, 1fr) 25px;
+    align-items: start;
+  }
+
+  .course-arrow {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: start;
+    justify-self: end;
+    margin: 0;
+    line-height: 1;
+    transform: none;
+  }
+
+  .course-card:hover .course-arrow {
+    transform: translateX(3px);
+  }
+}

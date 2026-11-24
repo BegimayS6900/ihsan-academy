@@ -1,8 +1,10 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ContactPage.css";
 
 const ContactPage = () => {
+  const pageRef = useRef(null);
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -12,6 +14,47 @@ const ContactPage = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const container = pageRef.current;
+    if (!container) return;
+
+    const elements = container.querySelectorAll(
+      ".contact-hero, .contact-form-card, .contact-info-card, .contact-social-card, .contact-faq, .faq-card"
+    );
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      elements.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -30px 0px",
+      }
+    );
+
+    elements.forEach((el, index) => {
+      el.classList.add("contact-reveal");
+      el.style.setProperty("--reveal-delay", `${(index % 4) * 100}ms`);
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -36,10 +79,9 @@ const ContactPage = () => {
   };
 
   return (
-    <main className="contact-page">
+    <main className="contact-page" ref={pageRef}>
       <div className="contact-container">
 
-        {/* HERO */}
         <section className="contact-hero">
           <span className="contact-label">БАЙЛАНЫШ</span>
           <h1>Биз менен байланышыңыз</h1>
@@ -49,10 +91,8 @@ const ContactPage = () => {
           </p>
         </section>
 
-        {/* CONTACT CONTENT */}
         <section className="contact-content">
 
-          {/* FORM */}
           <div className="contact-form-card">
             <h2>Өтүнүч калтыруу</h2>
 
@@ -63,7 +103,6 @@ const ContactPage = () => {
             )}
 
             <form onSubmit={handleSubmit}>
-
               <div className="form-row">
                 <div className="form-group">
                   <label>Атыңыз *</label>
@@ -135,14 +174,11 @@ const ContactPage = () => {
               <button type="submit" className="contact-submit">
                 <span>➤</span> Өтүнүч жөнөтүү
               </button>
-
             </form>
           </div>
 
-          {/* RIGHT SIDE */}
           <div className="contact-sidebar">
 
-            {/* CONTACT INFO */}
             <div className="contact-info-card">
               <h3>Байланыш маалыматы</h3>
 
@@ -174,7 +210,6 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* SOCIALS */}
             <div className="contact-social-card">
               <h3>Социалдык тармактар</h3>
 
@@ -221,7 +256,6 @@ const ContactPage = () => {
           </div>
         </section>
 
-        {/* FAQ */}
         <section className="contact-faq">
           <span className="contact-label">FAQ</span>
           <h2>Көп берилүүчү суроолор</h2>

@@ -313,3 +313,122 @@
     font-size: 14px;
   }
 }
+
+
+/* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
+
+.opportunities-page .reveal-item {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.opportunities-page .reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CARD HOVER */
+
+.opportunities-page .opportunity-card {
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.opportunities-page .opportunity-card:hover {
+  transform: translateY(-6px);
+  border-color: #8950e8;
+  box-shadow: 0 15px 35px rgba(111, 65, 190, 0.16);
+}
+
+/* DISCOUNT ANIMATION */
+
+.opportunities-page .discount-number {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.opportunities-page .opportunity-card:hover .discount-number {
+  color: #e0c3ff;
+  transform: scale(1.08);
+}
+
+/* BENEFITS HOVER */
+
+.opportunities-page .benefits-list li {
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.opportunities-page .benefits-list li:hover {
+  transform: translateX(5px);
+  color: #d4aaff;
+}
+
+.opportunities-page .check-icon {
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.opportunities-page .benefits-list li:hover .check-icon {
+  background: #7040b5;
+  transform: scale(1.12);
+}
+
+/* INFORMATION HOVER */
+
+.opportunities-page .opportunity-info {
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.opportunities-page .opportunity-info:hover {
+  border-color: #8950e8;
+  transform: translateY(-3px);
+}
+
+/* BUTTON */
+
+.opportunities-page .consultation-button {
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.opportunities-page .consultation-button:hover {
+  transform: translateY(-4px);
+  background: #347fff;
+  box-shadow: 0 12px 35px rgba(0, 85, 255, 0.35);
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .opportunities-page .reveal-item,
+  .opportunities-page .reveal-item.is-visible,
+  .opportunities-page .opportunity-card,
+  .opportunities-page .opportunity-info,
+  .opportunities-page .consultation-button,
+  .opportunities-page .discount-number,
+  .opportunities-page .benefits-list li,
+  .opportunities-page .check-icon {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+

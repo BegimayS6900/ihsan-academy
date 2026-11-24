@@ -1,17 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .about-page {
-  background: #030b2c;
-  color: #ffffff;
   min-height: 100vh;
+  background: #030b2c;
+  color: #fff;
   font-family: 'Inter', sans-serif;
+  overflow: hidden;
 }
 
 .about-container {
@@ -22,67 +17,67 @@
   padding-right: 24px;
 }
 
+.about-page .section-label {
+  margin-bottom: 10px;
+  color: #a65aff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 /* HERO */
 
 .about-hero {
-  padding-top: 75px;
-  padding-bottom: 60px;
-}
-
-.section-label {
-  color: #a65aff;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 13px;
+  padding-top: 65px;
+  padding-bottom: 42px;
 }
 
 .about-hero h1 {
+  margin-bottom: 14px;
   font-size: 38px;
   font-weight: 700;
   letter-spacing: -1.2px;
-  margin-bottom: 16px;
   line-height: 1.25;
 }
 
 .hero-description {
   max-width: 720px;
-  font-size: 16px;
-  line-height: 1.65;
   color: #f0f1ff;
+  font-size: 15px;
+  line-height: 1.65;
 }
 
 .stats {
   display: flex;
-  gap: 17px;
-  margin-top: 58px;
+  gap: 14px;
+  margin-top: 30px;
 }
 
 .stat-card {
-  width: 280px;
-  min-height: 108px;
-  border-radius: 17px;
-  background: #121735;
   display: flex;
+  width: 240px;
+  min-height: 92px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: 0.3s;
+  border-radius: 15px;
+  background: #121735;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   background: #191d46;
 }
 
 .stat-card h2 {
-  color: #c89bff;
-  font-size: 32px;
   margin-bottom: 5px;
+  color: #c89bff;
+  font-size: 28px;
 }
 
 .stat-card p {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* MISSION */
@@ -92,28 +87,28 @@
 }
 
 .mission-card {
-  padding: 43px;
-  min-height: 205px;
-  background: #111735;
+  min-height: 175px;
+  padding: 32px;
   border: 1px solid #39317f;
   border-radius: 18px;
+  background: #111735;
 }
 
 .mission-card p {
   max-width: 680px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
 /* PRINCIPLE */
 
 .principle-section {
-  padding-top: 65px;
+  padding-top: 38px;
 }
 
 .principle-card {
-  padding: 43px;
-  min-height: 155px;
+  min-height: 135px;
+  padding: 30px 32px;
   border: 1px solid #6040a6;
   border-radius: 18px;
   background:
@@ -126,170 +121,229 @@
 }
 
 .principle-card h2 {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 600;
 }
 
-/* TEACHERS */
+/* ABOUT TEACHERS */
 
-.teachers-section {
-  padding-top: 60px;
+.about-teachers-section {
+  padding-top: 38px;
+  padding-bottom: 0;
 }
 
-.section-title {
+.about-teachers-section .section-label {
+  margin-bottom: 7px;
+}
+
+.about-teachers-section .section-title {
+  margin-bottom: 34px;
   font-size: 25px;
-  font-weight: 700;
-  margin-bottom: 35px;
+  line-height: 1.3;
 }
 
-.teachers-grid {
+.about-teachers-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
+  width: 100%;
+  max-width: 900px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
 }
 
-.teacher-card {
+.about-teacher-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 181px;
   min-height: 181px;
-  padding: 22px;
-  text-align: center;
+  padding: 22px 12px 18px;
   border: 1px solid #333477;
   border-radius: 17px;
   background: #111735;
-  transition: 0.3s;
+  text-align: center;
+  overflow: visible;
+  transition:
+    transform 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease;
 }
 
-.teacher-card:hover {
-  transform: translateY(-6px);
+.about-teacher-card:hover {
+  transform: translateY(-4px);
   border-color: #8c54db;
+  box-shadow: 0 9px 24px rgba(111, 65, 190, 0.15);
 }
 
-.teacher-avatar {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  margin: 0 auto 15px;
+.about-teacher-avatar {
   display: flex;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
   align-items: center;
   justify-content: center;
-  color: #d4aaff;
-  background: #25204d;
+  margin: 0 auto 14px;
   border: 1px solid #7741bb;
+  border-radius: 50%;
+  background: #25204d;
+  color: #d4aaff;
 }
 
-.teacher-card h3 {
-  font-size: 15px;
-  margin-bottom: 5px;
+.about-teacher-card h3 {
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
-.teacher-role {
-  font-size: 13px;
+.about-teacher-role {
+  margin-bottom: 4px;
   color: #c58aff;
-  margin-bottom: 6px;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
-.teacher-experience {
-  font-size: 13px;
+.about-teacher-experience {
+  display: block;
+  width: 100%;
+  min-height: 18px;
+  height: auto;
+  margin-top: 2px;
+  padding-bottom: 3px;
   color: #d4d8f5;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: normal;
+  overflow: visible;
+}
+
+/* TEACHER REVEAL */
+
+.about-teacher-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.about-teacher-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-teachers-grid .about-teacher-card:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.about-teachers-grid .about-teacher-card:nth-child(2) {
+  transition-delay: 120ms;
+}
+
+.about-teachers-grid .about-teacher-card:nth-child(3) {
+  transition-delay: 240ms;
 }
 
 /* PROCESS */
 
 .process-section {
-  padding-top: 60px;
-  padding-bottom: 43px;
+  padding-top: 58px;
+  padding-bottom: 38px;
+}
+
+.process-section .section-title {
+  margin-bottom: 34px;
 }
 
 .process-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 17px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .process-card {
-  min-height: 178px;
-  padding: 22px;
-  background: #111735;
+  min-height: 165px;
+  padding: 19px;
   border: 1px solid #333477;
-  border-radius: 17px;
-  transition: 0.3s;
+  border-radius: 15px;
+  background: #111735;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .process-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: #8d51d7;
 }
 
 .process-number {
-  font-size: 38px;
+  margin-bottom: 10px;
+  color: #7662bd;
+  font-size: 32px;
   font-weight: 700;
-  color: #46377e;
-  margin-bottom: 13px;
 }
 
 .process-card h3 {
-  font-size: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .process-card p {
   color: #e2e5f8;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.6;
 }
+
+/* CONSULTATION */
 
 .consultation-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 58px;
+  margin-top: 32px;
 }
 
 .consultation-btn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 26px;
+  padding: 14px 24px;
   border-radius: 12px;
   background: #0865fa;
-  color: white;
-  font-size: 15px;
+  color: #fff;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 8px 30px rgba(0, 90, 255, 0.2);
-  transition: 0.3s;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 .consultation-btn:hover {
-  background: #347fff;
   transform: translateY(-3px);
+  background: #347fff;
 }
 
+/* TABLET */
+
+@media (max-width: 900px) {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-teachers-grid {
+    max-width: 720px;
+  }
+}
+
+/* MOBILE */
 
 @media (max-width: 768px) {
-  .about-header {
-    height: auto;
-    position: relative;
-  }
-
-  .navbar {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    flex-wrap: wrap;
-  }
-
-  .nav-links {
-    order: 3;
-    width: 100%;
-    overflow-x: auto;
-    padding: 10px 0;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    flex-shrink: 0;
-  }
-
   .about-hero {
-    padding-top: 55px;
+    padding-top: 48px;
+    padding-bottom: 32px;
   }
 
   .about-hero h1 {
@@ -301,44 +355,62 @@
   }
 
   .stats {
-    margin-top: 35px;
+    margin-top: 24px;
   }
 
   .stat-card {
     width: 50%;
-    min-height: 95px;
+    min-height: 85px;
   }
 
   .stat-card h2 {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   .mission-card,
   .principle-card {
-    padding: 27px;
+    padding: 25px;
+  }
+
+  .mission-card {
+    min-height: auto;
   }
 
   .mission-card p {
-    font-size: 17px;
+    font-size: 16px;
+  }
+
+  .principle-section {
+    padding-top: 28px;
+  }
+
+  .principle-card {
+    min-height: auto;
   }
 
   .principle-card h2 {
-    font-size: 23px;
+    font-size: 22px;
   }
 
-  .teachers-grid {
-    grid-template-columns: 1fr;
+  .about-teachers-section {
+    padding-top: 30px;
   }
 
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .about-teachers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 35px 20px;
+  .about-teacher-card {
+    height: 181px;
+    min-height: 181px;
+  }
+
+  .process-section {
+    padding-top: 42px;
   }
 }
+
+/* SMALL MOBILE */
 
 @media (max-width: 480px) {
   .about-container {
@@ -346,42 +418,90 @@
     padding-right: 18px;
   }
 
-  .brand {
-    font-size: 13px;
-  }
-
-  .brand-logo {
-    width: 34px;
-    height: 34px;
-  }
-
-  .register-btn,
-  .language-btn {
-    padding: 10px 12px;
-    font-size: 12px;
+  .about-hero {
+    padding-top: 38px;
   }
 
   .about-hero h1 {
-    font-size: 27px;
+    font-size: 26px;
   }
 
   .stats {
-    gap: 10px;
+    gap: 9px;
   }
 
   .stat-card h2 {
+    font-size: 20px;
+  }
+
+  .stat-card p {
+    font-size: 11px;
+  }
+
+  .mission-card,
+  .principle-card {
+    padding: 20px;
+  }
+
+  .mission-card p {
+    font-size: 15px;
+  }
+
+  .principle-card h2 {
+    font-size: 19px;
+  }
+
+  .about-teachers-section .section-title,
+  .about-page .section-title {
     font-size: 21px;
+  }
+
+  .about-teachers-grid {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+
+  .about-teacher-card {
+    height: 181px;
+    min-height: 181px;
+    padding: 18px 14px;
   }
 
   .process-grid {
     grid-template-columns: 1fr;
+    gap: 11px;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
+  .process-card {
+    min-height: auto;
   }
 
-  .section-title {
-    font-size: 22px;
+  .consultation-wrapper {
+    margin-top: 24px;
+  }
+
+  .consultation-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-teacher-reveal,
+  .about-teacher-reveal.is-visible,
+  .about-teacher-card,
+  .process-card,
+  .stat-card,
+  .consultation-btn {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
   }
 }

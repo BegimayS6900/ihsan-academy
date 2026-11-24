@@ -21,10 +21,9 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
 
-        {/* FOOTER MAIN */}
         <div className="footer-main">
 
-          {/* COLUMN 1 - ABOUT */}
+          {/* ABOUT */}
           <div className="footer-about">
 
             <Link to="/" className="footer-logo">
@@ -80,14 +79,13 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* COLUMN 2 - NAVIGATION */}
+          {/* NAVIGATION */}
           <div className="footer-column">
             <h3>Навигация</h3>
 
             <ul>
               <li><Link to="/">Башкы бет</Link></li>
               <li><Link to="/courses">Курстар</Link></li>
-              <li><Link to="/internship">Стажировка</Link></li>
               <li><Link to="/about">Биз жөнүндө</Link></li>
               <li><Link to="/features">Мүмкүнчүлүктөр</Link></li>
               <li><Link to="/teachers">Мугалимдер</Link></li>
@@ -95,50 +93,21 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* COLUMN 3 - COURSES */}
+          {/* COURSES */}
           <div className="footer-column">
             <h3>Курстар</h3>
 
             <ul>
-              <li>
-                <Link to="/courses/frontend">
-                  Frontend иштеп чыгуу
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/courses/backend">
-                  Backend иштеп чыгуу
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/courses/ui-ux">
-                  UI/UX Дизайн
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/courses/data-science">
-                  Data Science
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/courses/cybersecurity">
-                  Киберкоопсуздук
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/courses/mobile">
-                  Мобилдик иштеп чыгуу
-                </Link>
-              </li>
+              <li><Link to="/courses">Frontend иштеп чыгуу</Link></li>
+              <li><Link to="/courses">Backend иштеп чыгуу</Link></li>
+              <li><Link to="/courses">UI/UX Дизайн</Link></li>
+              <li><Link to="/courses">Data Science</Link></li>
+              <li><Link to="/courses">Киберкоопсуздук</Link></li>
+              <li><Link to="/courses">Мобилдик иштеп чыгуу</Link></li>
             </ul>
           </div>
 
-          {/* COLUMN 4 - CONTACTS */}
+          {/* CONTACTS */}
           <div className="footer-column footer-contacts">
             <h3>Байланыш</h3>
 
@@ -163,7 +132,7 @@ const Footer = () => {
 
         </div>
 
-        {/* FOOTER BOTTOM */}
+        {/* BOTTOM */}
         <div className="footer-bottom">
           <p>
             © 2026 Ihsan IT Academy. Бардык укуктар корголгон.

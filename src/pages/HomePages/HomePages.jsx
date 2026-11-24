@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePages.css";
 
 const courses = [
@@ -66,6 +65,44 @@ const technologies = [
 ];
 
 const HomePages = () => {
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(
+      ".home-page > section, .home-page .stat-card, .home-page .course-card, .home-page .advantage-card, .home-page .teacher-card"
+    );
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -35px 0px",
+      }
+    );
+
+    revealElements.forEach((element) => {
+      element.classList.add("reveal-on-scroll");
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="home-page">
 

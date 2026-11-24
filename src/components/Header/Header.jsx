@@ -108,7 +108,7 @@ const Header = () => {
 
           {/* REGISTER */}
           <Link
-            to="/register"
+            to="/contacts"
             className="register-btn"
             onClick={() => setMenuOpen(false)}
           >

@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./TeachersPage.css";
 
 const teachers = [
@@ -33,10 +32,51 @@ const teachers = [
 ];
 
 const TeachersPage = () => {
-  return (
-    <main className="teachers-page">
-      <div className="teachers-container">
+  const pageRef = useRef(null);
 
+  useEffect(() => {
+    const container = pageRef.current;
+    if (!container) return undefined;
+
+    const targets = container.querySelectorAll(
+      ".teachers-heading, .teacher-card, .teachers-cta"
+    );
+
+    const prefersReducedMotion =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -30px 0px",
+      }
+    );
+
+    targets.forEach((el) => {
+      el.classList.add("reveal-item");
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <main className="teachers-page" ref={pageRef}>
+      <div className="teachers-container">
         {/* Heading */}
         <section className="teachers-heading">
           <span className="teachers-label">КОМАНДА</span>
@@ -52,17 +92,18 @@ const TeachersPage = () => {
 
         {/* Teachers Cards */}
         <section className="teachers-grid">
-
-          {teachers.map((teacher) => (
-            <article className="teacher-card" key={teacher.id}>
-
+          {teachers.map((teacher, index) => (
+            <article
+              className="teacher-card"
+              key={teacher.id}
+              style={{ "--reveal-delay": `${index * 90}ms` }}
+            >
               <div className="teacher-experience">
                 {teacher.experience}
               </div>
 
               {/* Teacher information */}
               <div className="teacher-profile">
-
                 <div className="teacher-avatar">
                   <svg
                     viewBox="0 0 24 24"
@@ -81,7 +122,6 @@ const TeachersPage = () => {
                   <h2>{teacher.name}</h2>
                   <span>{teacher.position}</span>
                 </div>
-
               </div>
 
               {/* Description */}
@@ -104,25 +144,20 @@ const TeachersPage = () => {
 
               {/* Buttons */}
               <div className="teacher-card-footer">
-
-                <a href="/courses" className="teacher-enroll">
+                <a href="/contacts" className="teacher-enroll">
                   Жазылуу
                 </a>
 
-                <a href="/contact" className="teacher-more">
+                <a href="/contacts" className="teacher-more">
                   Толугураак <span>→</span>
                 </a>
-
               </div>
-
             </article>
           ))}
-
         </section>
 
         {/* CTA Section */}
         <section className="teachers-cta">
-
           <span className="cta-label">
             БАШТООГО ДАЯРСЫҢБЫ?
           </span>
@@ -134,13 +169,11 @@ const TeachersPage = () => {
             ылайык окутуучу жана курс тандайбыз.
           </p>
 
-          <a href="/contact" className="teachers-cta-button">
+          <a href="/contacts" className="teachers-cta-button">
             Акысыз консультация
             <span>→</span>
           </a>
-
         </section>
-
       </div>
     </main>
   );

@@ -1,4 +1,3 @@
-
 /* =========================
    TEACHERS PAGE
 ========================= */
@@ -17,6 +16,25 @@
   max-width: 1056px;
   width: 100%;
   margin: 0 auto;
+}
+
+/* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========================
@@ -76,10 +94,14 @@
   border-radius: 30px;
   background: #111532;
   box-sizing: border-box;
-  transition: 0.3s ease;
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.teacher-card:hover {
+.teacher-card.is-visible:hover {
   border-color: #8151e8;
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(80, 40, 180, 0.12);
@@ -333,7 +355,7 @@
 }
 
 /* =========================
-   TABLET
+   TABLET & MOBILE
 ========================= */
 
 @media (max-width: 1000px) {
@@ -350,10 +372,6 @@
     margin-bottom: 50px;
   }
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 600px) {
   .teachers-page {
@@ -429,3 +447,14 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item,
+  .reveal-item.is-visible,
+  .teacher-card,
+  .teacher-card.is-visible:hover {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

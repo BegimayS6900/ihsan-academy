@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import "./AboutPage.css";
 
 const teachers = [
@@ -24,30 +24,62 @@ const process = [
   {
     number: "01",
     title: "Консультация",
-    description:
-      "Акысыз жолугушуу, курс жана форматты тандоо.",
+    description: "Акысыз жолугушуу, курс жана форматты тандоо.",
   },
   {
     number: "02",
     title: "Окуу",
-    description:
-      "Ментор менен жумасына 3 жолу практикалык сабактар.",
+    description: "Ментор менен жумасына 3 жолу практикалык сабактар.",
   },
   {
     number: "03",
     title: "Долбоорлор",
-    description:
-      "Портфолио үчүн чыныгы тапшырмалар жана кейстер.",
+    description: "Портфолио үчүн чыныгы тапшырмалар жана кейстер.",
   },
   {
     number: "04",
     title: "Карьера",
-    description:
-      "Резюме, интервью жана жумуш издөөдө жардам.",
+    description: "Резюме, интервью жана жумуш издөөдө жардам.",
   },
 ];
 
 function AboutPage() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      ".about-teachers-section .section-label, .about-teachers-section .section-title, .about-teachers-section .about-teacher-card"
+    );
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) =>
+        element.classList.add("is-visible")
+      );
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -30px 0px",
+      }
+    );
+
+    elements.forEach((element) => {
+      element.classList.add("about-teacher-reveal");
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="about-page">
       <main>
@@ -81,7 +113,6 @@ function AboutPage() {
         <section className="about-container mission-section">
           <div className="mission-card">
             <div className="section-label">БИЗДИН МИССИЯ</div>
-
             <p>
               Жаштарга сапаттуу IT билим берип, алардын
               теориялык билимин практикалык тажрыйба менен
@@ -100,21 +131,25 @@ function AboutPage() {
         </section>
 
         {/* TEACHERS */}
-        <section className="about-container teachers-section">
+        <section className="about-container about-teachers-section">
           <div className="section-label">КОМАНДА</div>
           <h2 className="section-title">Биздин окутуучулар</h2>
 
-          <div className="teachers-grid">
-            {teachers.map((teacher, index) => (
-              <div className="teacher-card" key={index}>
-                <div className="teacher-avatar">
+          <div className="about-teachers-grid">
+            {teachers.map((teacher) => (
+              <div
+                className="about-teacher-card"
+                key={teacher.name}
+              >
+                <div className="about-teacher-avatar">
                   <svg
-                    width="30"
-                    height="30"
+                    width="26"
+                    height="26"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.8"
+                    aria-hidden="true"
                   >
                     <circle cx="12" cy="8" r="4" />
                     <path d="M5 21v-2a7 7 0 0 1 14 0v2" />
@@ -122,8 +157,12 @@ function AboutPage() {
                 </div>
 
                 <h3>{teacher.name}</h3>
-                <p className="teacher-role">{teacher.role}</p>
-                <p className="teacher-experience">
+
+                <p className="about-teacher-role">
+                  {teacher.role}
+                </p>
+
+                <p className="about-teacher-experience">
                   {teacher.experience}
                 </p>
               </div>
@@ -137,12 +176,11 @@ function AboutPage() {
           <h2 className="section-title">Окуу кандай өтөт</h2>
 
           <div className="process-grid">
-            {process.map((item, index) => (
-              <div className="process-card" key={index}>
+            {process.map((item) => (
+              <div className="process-card" key={item.number}>
                 <div className="process-number">
                   {item.number}
                 </div>
-
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </div>
@@ -156,7 +194,6 @@ function AboutPage() {
           </div>
         </section>
       </main>
-
     </div>
   );
 }

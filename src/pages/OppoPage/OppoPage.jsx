@@ -1,20 +1,67 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./OppoPage.css";
 
+const benefits = [
+  "Көп балалуу үй-бүлөлөрдүн ата-энелери.",
+  "Ден соолугунун мүмкүнчүлүгү чектелген адамдар.",
+  "Тоолуу райондордо жашаган жарандар.",
+  "Мамлекеттик мекемелерде иштеген кызматкерлер.",
+];
+
 const OppoPage = () => {
-  const benefits = [
-    "Көп балалуу үй-бүлөлөрдүн ата-энелери.",
-    "Ден соолугунун мүмкүнчүлүгү чектелген адамдар.",
-    "Тоолуу райондордо жашаган жарандар.",
-    "Мамлекеттик мекемелерде иштеген кызматкерлер.",
-  ];
+  const pageRef = useRef(null);
+
+  useEffect(() => {
+    const container = pageRef.current;
+    if (!container) return;
+
+    const elements = container.querySelectorAll(
+      ".opportunities-heading, .opportunity-card, .opportunity-info, .opportunities-action"
+    );
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      elements.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -30px 0px",
+      }
+    );
+
+    elements.forEach((el, index) => {
+      el.style.setProperty(
+        "--reveal-delay",
+        `${index * 120}ms`
+      );
+
+      el.classList.add("reveal-item");
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <main className="opportunities-page">
+    <main className="opportunities-page" ref={pageRef}>
       <div className="opportunities-container">
 
-        {/* Page heading */}
+        {/* HEADING */}
         <div className="opportunities-heading">
           <span className="opportunities-label">
             МҮМКҮНЧҮЛҮКТӨР
@@ -27,10 +74,10 @@ const OppoPage = () => {
           </p>
         </div>
 
-        {/* Cards */}
+        {/* CARDS */}
         <div className="opportunities-grid">
 
-          {/* 15% Discount */}
+          {/* 15% */}
           <div className="opportunity-card">
             <div className="opportunity-card-header">
               <span className="discount-number">15%</span>
@@ -51,7 +98,7 @@ const OppoPage = () => {
             </ul>
           </div>
 
-          {/* 10% Discount */}
+          {/* 10% */}
           <div className="opportunity-card office-card">
             <div className="opportunity-card-header">
               <span className="discount-number">10%</span>
@@ -75,7 +122,7 @@ const OppoPage = () => {
 
         </div>
 
-        {/* Information */}
+        {/* INFORMATION */}
         <div className="opportunity-info">
           <div className="info-icon">▤</div>
 
@@ -93,7 +140,7 @@ const OppoPage = () => {
 
         {/* CTA */}
         <div className="opportunities-action">
-          <a href="/contact" className="consultation-button">
+          <a href="/contacts" className="consultation-button">
             Акысыз консультация алуу
             <span>→</span>
           </a>
