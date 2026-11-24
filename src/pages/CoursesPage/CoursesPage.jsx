@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Atom,
   Server,
@@ -17,96 +18,17 @@ import {
 } from "lucide-react";
 import "./CoursesPage.css";
 
-const courses = [
-  {
-    id: 1,
-    number: "01",
-    title: "Frontend иштеп чыгуу",
-    level: "Башталгыч",
-    description:
-      "Курс веб-баракчаларды жасоодон баштап React менен иштөөгө чейинки заманбап веб-иштеп чыгууну үйрөтөт.",
-    topics: ["HTML жана CSS", "JavaScript ES6+", "React + TypeScript", "Git жана GitHub"],
-    price: "12 000",
-    duration: "6 ай",
-    category: "beginner",
-    Icon: Atom,
-  },
-  {
-    id: 2,
-    number: "02",
-    title: "Backend иштеп чыгуу",
-    level: "Орто",
-    description:
-      "Node.js, Python, маалымат базалары жана сервердик тиркемелер менен иштөөнү үйрөнүңүз.",
-    topics: ["Python / Node.js", "REST API", "PostgreSQL", "Authentication"],
-    price: "13 000",
-    duration: "7 ай",
-    category: "middle",
-    Icon: Server,
-  },
-  {
-    id: 3,
-    number: "03",
-    title: "UI/UX Дизайн",
-    level: "Башталгыч",
-    description:
-      "Figma, дизайн-ой жүгүртүү, прототиптөө жана колдонуучуга ыңгайлуу интерфейстерди түзүү.",
-    topics: ["Figma", "UX-изилдөөлөр", "Прототиптөө", "UI дизайн"],
-    price: "10 000",
-    duration: "4 ай",
-    category: "beginner",
-    Icon: Brush,
-  },
-  {
-    id: 4,
-    number: "04",
-    title: "Data Science",
-    level: "Жогорку",
-    description:
-      "Машиналык үйрөнүү, маалыматтарды талдоо жана жасалма интеллекттин негиздери.",
-    topics: ["Python", "NumPy / Pandas", "ML / Терең үйрөнүү", "Маалыматтарды талдоо"],
-    price: "15 000",
-    duration: "8 ай",
-    category: "advanced",
-    Icon: ChartNoAxesColumn,
-  },
-  {
-    id: 5,
-    number: "05",
-    title: "Киберкоопсуздук",
-    level: "Орто",
-    description:
-      "Системаларды коргоо, этикалык хакинг жана тармактык коопсуздуктун негиздери.",
-    topics: ["Linux", "Пентестинг", "CTF", "Network Security"],
-    price: "14 000",
-    duration: "6 ай",
-    category: "middle",
-    Icon: ShieldCheck,
-  },
-  {
-    id: 6,
-    number: "06",
-    title: "Мобилдик иштеп чыгуу",
-    level: "Орто",
-    description:
-      "Android жана iOS үчүн мобилдик тиркемелерди иштеп чыгуунун негиздери.",
-    topics: ["React Native", "Flutter", "iOS жана Android", "API менен иштөө"],
-    price: "13 000",
-    duration: "5 ай",
-    category: "middle",
-    Icon: Smartphone,
-  },
-];
+const courseIconsById = {
+  1: Atom,
+  2: Server,
+  3: Brush,
+  4: ChartNoAxesColumn,
+  5: ShieldCheck,
+  6: Smartphone,
+};
 
-const filters = [
-  { label: "Баары", value: "all" },
-  { label: "Башталгыч", value: "beginner" },
-  { label: "Орто", value: "middle" },
-  { label: "Жогорку", value: "advanced" },
-];
-
-function CourseCard({ course, onDetails }) {
-  const { Icon } = course;
+function CourseCard({ course, onDetails, t }) {
+  const Icon = courseIconsById[course.id] || Atom;
 
   return (
     <article className="course-card">
@@ -126,14 +48,17 @@ function CourseCard({ course, onDetails }) {
 
         <p className="course-card__description">{course.description}</p>
 
-        <div className="course-card__topics" aria-label="Курстун темалары">
-          {course.topics.slice(0, 3).map((topic) => (
+        <div
+          className="course-card__topics"
+          aria-label={t("coursesPage.card.topicsAriaLabel")}
+        >
+          {(course.topics || []).slice(0, 3).map((topic) => (
             <span className="course-topic" key={topic}>
               <Check size={11} />
               {topic}
             </span>
           ))}
-          {course.topics.length > 3 && (
+          {(course.topics || []).length > 3 && (
             <span className="course-topic__more">
               +{course.topics.length - 3}
             </span>
@@ -142,7 +67,9 @@ function CourseCard({ course, onDetails }) {
       </div>
 
       <div className="course-card__price">
-        <strong>{course.price} сом/ай</strong>
+        <strong>
+          {course.price} {t("coursesPage.card.priceSuffix")}
+        </strong>
         <span className="course-card__duration">
           <Clock3 size={12} />
           {course.duration}
@@ -151,19 +78,19 @@ function CourseCard({ course, onDetails }) {
         <button
           className="course-card__link"
           type="button"
-          onClick={() => onDetails(course)}
+          onClick={() => onDetails(course.id)}
         >
-          Толугураак <ArrowRight size={15} />
+          {t("coursesPage.card.detailsButton")} <ArrowRight size={15} />
         </button>
       </div>
     </article>
   );
 }
 
-function CourseModal({ course, onClose }) {
+function CourseModal({ course, onClose, t }) {
   if (!course) return null;
 
-  const { Icon } = course;
+  const Icon = courseIconsById[course.id] || Atom;
 
   return (
     <div className="course-modal-overlay" onClick={onClose}>
@@ -189,7 +116,7 @@ function CourseModal({ course, onClose }) {
             type="button"
             className="course-modal__close"
             onClick={onClose}
-            aria-label="Терезени жабуу"
+            aria-label={t("coursesPage.modal.closeAriaLabel")}
           >
             ×
           </button>
@@ -202,16 +129,16 @@ function CourseModal({ course, onClose }) {
             <Clock3 size={17} />
             <div>
               <strong>{course.duration}</strong>
-              <span>Узактыгы</span>
+              <span>{t("coursesPage.modal.durationLabel")}</span>
             </div>
           </div>
 
           <div className="course-modal__program">
             <h3>
-              <span>▣</span> ПРОГРАММА
+              <span>▣</span> {t("coursesPage.modal.programTitle")}
             </h3>
             <ul>
-              {course.topics.map((topic) => (
+              {(course.topics || []).map((topic) => (
                 <li key={topic}>
                   <Check size={15} />
                   {topic}
@@ -222,8 +149,10 @@ function CourseModal({ course, onClose }) {
 
           <div className="course-modal__footer">
             <div className="course-modal__price">
-              <strong>{course.price} сом/ай</strong>
-              <span>Бул курс үчүн</span>
+              <strong>
+                {course.price} {t("coursesPage.card.priceSuffix")}
+              </strong>
+              <span>{t("coursesPage.modal.priceLabel")}</span>
             </div>
 
             <Link
@@ -231,7 +160,7 @@ function CourseModal({ course, onClose }) {
               className="course-modal__enroll"
               onClick={onClose}
             >
-              Жазылуу <ArrowRight size={17} />
+              {t("coursesPage.modal.enrollButton")} <ArrowRight size={17} />
             </Link>
           </div>
         </div>
@@ -240,28 +169,31 @@ function CourseModal({ course, onClose }) {
   );
 }
 
-function InternshipSection() {
+function InternshipSection({ t }) {
+  const whoCanJoinItems =
+    t("coursesPage.internship.whoCanJoinItems", { returnObjects: true }) || [];
+  const activitiesItems =
+    t("coursesPage.internship.activitiesItems", { returnObjects: true }) || [];
+  const perksItems =
+    t("coursesPage.internship.perksItems", { returnObjects: true }) || [];
+
   return (
     <section className="internship-section" id="internship">
       <div className="internship-header">
-        <span className="internship-eyebrow">СТАЖИРОВКА · 3 АЙ</span>
+        <span className="internship-eyebrow">
+          {t("coursesPage.internship.eyebrow")}
+        </span>
 
         <h2>
-          Ihsan IT Academy — 3 айлык практикалык
+          {t("coursesPage.internship.titleLine1")}
           <br className="internship-desktop-break" />
-          стажировка программасы
+          {t("coursesPage.internship.titleLine2")}
         </h2>
 
-        <p className="internship-lead">
-          Эгер сизде буга чейин эле тажрыйба болсо жана реалдуу долбоорлор
-          менен иштегиңиз келсе — бизде 3 айлык стажировка бар.
-        </p>
+        <p className="internship-lead">{t("coursesPage.internship.lead")}</p>
 
         <p className="internship-description">
-          Программанын максаты — IT тармагында билим алган, бирок практикалык
-          тажрыйбасы жетишсиз адамдарга реалдуу иш чөйрөсүндө тажрыйба
-          топтоого, портфолио жана резюме даярдоого, жумушка орношууга
-          даярданууга жардам берүү.
+          {t("coursesPage.internship.description")}
         </p>
       </div>
 
@@ -269,70 +201,79 @@ function InternshipSection() {
         <article className="internship-card">
           <div className="internship-card__heading">
             <Users size={21} />
-            <h3>Кимдер катыша алат?</h3>
+            <h3>{t("coursesPage.internship.whoCanJoinTitle")}</h3>
           </div>
           <ul>
-            <li><Check /> Башка IT курстарында окуп бүтүргөндөр.</li>
-            <li><Check /> Университеттин IT багытындагы бүтүрүүчүлөрү.</li>
-            <li><Check /> Өз алдынча программалоону үйрөнгөндөр.</li>
-            <li><Check /> IT тармагында иш баштоону каалаган, базалык билими бар адамдар.</li>
+            {whoCanJoinItems.map((item) => (
+              <li key={item}>
+                <Check /> {item}
+              </li>
+            ))}
           </ul>
         </article>
 
         <article className="internship-card">
           <div className="internship-card__heading">
             <BriefcaseBusiness size={21} />
-            <h3>Стажировка учурунда катышуучулар:</h3>
+            <h3>{t("coursesPage.internship.activitiesTitle")}</h3>
           </div>
           <ul>
-            <li><Check /> Реалдуу IT долбоорлор менен иштешет жана практикалык тапшырмаларды аткарышат.</li>
-            <li><Check /> Команда менен иштөө тажрыйбасын алышат.</li>
-            <li><Check /> Жеке портфолиосун түзүп, кесиптик резюме (CV) даярдашат.</li>
-            <li><Check /> Техникалык маектешүүгө даярданышат.</li>
-            <li><Check /> Менторлордон кеңеш алып, жумушка орношуу боюнча колдоо алышат.</li>
+            {activitiesItems.map((item) => (
+              <li key={item}>
+                <Check /> {item}
+              </li>
+            ))}
           </ul>
         </article>
 
         <article className="internship-card internship-card--wide">
           <div className="internship-card__heading">
             <GraduationCap size={21} />
-            <h3>Өзгөчө мүмкүнчүлүктөр</h3>
+            <h3>{t("coursesPage.internship.perksTitle")}</h3>
           </div>
           <ul>
-            <li><Check /> Ihsan IT Academy'де окуган студенттер үчүн стажировка акысыз.</li>
-            <li><Check /> Мыкты катышуучуларды Казахстандагы IT компанияларына стажировкага жөнөтүү мүмкүнчүлүгү каралат.</li>
-            <li><Check /> Өзүн жакшы көрсөткөн стажёрлорду академиянын өзүнө жумушка алуу мүмкүнчүлүгү бар.</li>
-            <li><Check /> Жумушка даярдануу, резюме жана портфолио боюнча колдоо көрсөтүлөт.</li>
+            {perksItems.map((item) => (
+              <li key={item}>
+                <Check /> {item}
+              </li>
+            ))}
           </ul>
         </article>
       </div>
 
       <div className="internship-notice">
         <Info size={20} />
-        <p>
-          Стажировкадан өтүү жумушка орношууга кепилдик бербейт.
-          Академия катышуучуларга даярдануу жана мүмкүнчүлүктөрдү табуу
-          боюнча колдоо көрсөтөт.
-        </p>
+        <p>{t("coursesPage.internship.notice")}</p>
       </div>
 
       <Link to="/contacts" className="internship-button">
-        Стажировкага катталуу <ArrowRight size={19} />
+        {t("coursesPage.internship.ctaButton")} <ArrowRight size={19} />
       </Link>
     </section>
   );
 }
 
 export default function CoursesPage() {
+  const { t, i18n } = useTranslation();
   const [activeFilter, setActiveFilter] = useState("all");
-  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedCourseId, setSelectedCourseId] = useState(null);
+
+  const courses =
+    t("coursesPage.courses", { returnObjects: true }) || [];
+  const filters =
+    t("coursesPage.filters", { returnObjects: true }) || [];
 
   const filteredCourses = useMemo(
     () =>
       activeFilter === "all"
         ? courses
         : courses.filter((course) => course.category === activeFilter),
-    [activeFilter]
+    [courses, activeFilter]
+  );
+
+  const selectedCourse = useMemo(
+    () => courses.find((course) => course.id === selectedCourseId) || null,
+    [courses, selectedCourseId]
   );
 
   useEffect(() => {
@@ -367,26 +308,30 @@ export default function CoursesPage() {
     });
 
     return () => observer.disconnect();
-  }, [activeFilter]);
+  }, [activeFilter, i18n.language]);
 
   return (
     <main className="courses-page">
       <div className="courses-container">
         <section className="courses-intro">
-          <span className="courses-eyebrow">ОКУТУУ</span>
+          <span className="courses-eyebrow">
+            {t("coursesPage.intro.eyebrow")}
+          </span>
           <h1>
-            Курстар <span>06</span>
+            {t("coursesPage.intro.title")}{" "}
+            <span>{t("coursesPage.intro.count")}</span>
           </h1>
           <p>
-            Толук маалымат алуу үчүн курска басыңыз. Практика,
-            <br className="courses-desktop-break" /> менторлук, жумуш.
+            {t("coursesPage.intro.descriptionLine1")}
+            <br className="courses-desktop-break" />
+            {t("coursesPage.intro.descriptionLine2")}
           </p>
         </section>
 
         <div
           className="courses-filters"
           role="group"
-          aria-label="Курстун деңгээли"
+          aria-label={t("coursesPage.filtersAriaLabel")}
         >
           {filters.map((filter) => (
             <button
@@ -403,27 +348,30 @@ export default function CoursesPage() {
           ))}
         </div>
 
-        <section className="courses-list" aria-label="Окуу курстары">
+        <section
+          className="courses-list"
+          aria-label={t("coursesPage.coursesListAriaLabel")}
+        >
           {filteredCourses.map((course) => (
             <CourseCard
               course={course}
               key={course.id}
-              onDetails={setSelectedCourse}
+              onDetails={setSelectedCourseId}
+              t={t}
             />
           ))}
 
           {filteredCourses.length === 0 && (
-            <p className="courses-empty">
-              Бул деңгээлде азырынча курстар жок.
-            </p>
+            <p className="courses-empty">{t("coursesPage.emptyMessage")}</p>
           )}
         </section>
 
-        <InternshipSection />
+        <InternshipSection t={t} />
 
         <CourseModal
           course={selectedCourse}
-          onClose={() => setSelectedCourse(null)}
+          onClose={() => setSelectedCourseId(null)}
+          t={t}
         />
       </div>
     </main>

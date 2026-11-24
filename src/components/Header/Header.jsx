@@ -1,28 +1,41 @@
 
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import {
   Globe,
   ChevronDown,
   Menu,
   X,
 } from "lucide-react";
+
 import "./Header.css";
 
 const Header = () => {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
-  const [language, setLanguage] = useState("KG");
   const [langOpen, setLangOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const language = i18n.resolvedLanguage || i18n.language;
+
+  // CHANGE LANGUAGE
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("language", lang);
+    setLangOpen(false);
+  };
+
+  // NAVIGATION
   const navLinks = [
-    { id: "home", title: "Башкы бет", path: "/" },
-    { id: "courses", title: "Курстар", path: "/courses" },
-    { id: "about", title: "Биз жөнүндө", path: "/about" },
-    { id: "features", title: "Мүмкүнчүлүктөр", path: "/features" },
-    { id: "teachers", title: "Мугалимдер", path: "/teachers" },
-    { id: "contacts", title: "Байланыш", path: "/contacts" },
+    { id: "home", title: t("home"), path: "/" },
+    { id: "courses", title: t("courses"), path: "/courses" },
+    { id: "about", title: t("about"), path: "/about" },
+    { id: "features", title: t("features"), path: "/features" },
+    { id: "teachers", title: t("teachers"), path: "/teachers" },
+    { id: "contacts", title: t("contacts"), path: "/contacts" },
   ];
 
   const languages = ["KG", "RU", "EN"];
@@ -59,6 +72,7 @@ const Header = () => {
 
         {/* NAVIGATION */}
         <nav className={`header-nav ${menuOpen ? "nav-open" : ""}`}>
+
           {navLinks.map((link) => (
             <Link
               key={link.id}
@@ -79,7 +93,9 @@ const Header = () => {
               onClick={() => setLangOpen(!langOpen)}
             >
               <Globe size={17} />
+
               <span>{language}</span>
+
               <ChevronDown
                 size={14}
                 className={langOpen ? "chevron-rotate" : ""}
@@ -94,10 +110,7 @@ const Header = () => {
                     className={
                       language === lang ? "selected-lang" : ""
                     }
-                    onClick={() => {
-                      setLanguage(lang);
-                      setLangOpen(false);
-                    }}
+                    onClick={() => changeLanguage(lang)}
                   >
                     {lang}
                   </button>
@@ -112,8 +125,9 @@ const Header = () => {
             className="register-btn"
             onClick={() => setMenuOpen(false)}
           >
-            Катталуу
+            {t("register")}
           </Link>
+
         </nav>
       </div>
     </header>

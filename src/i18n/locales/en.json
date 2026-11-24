@@ -1,0 +1,517 @@
+{
+  "home": "Home",
+  "courses": "Courses",
+  "about": "About Us",
+  "features": "Features",
+  "teachers": "Teachers",
+  "contacts": "Contacts",
+  "register": "Register",
+  "footer": {
+  "description": "A next-generation IT academy in Bishkek. We teach the professions of the future.",
+  "navigation": "Navigation",
+  "courses": "Courses",
+  "frontend": "Frontend Development",
+  "backend": "Backend Development",
+  "uiux": "UI/UX Design",
+  "dataScience": "Data Science",
+  "cybersecurity": "Cybersecurity",
+  "mobile": "Mobile Development",
+  "address": "230 Toktogul Street, Bishkek",
+  "schedule": "Mon–Sat: 10:00–20:00, Sun: Closed",
+  "copyright": "© 2026 Ihsan IT Academy. All rights reserved.",
+  "location": "Bishkek, Kyrgyzstan EN"
+},
+"aboutPage": {
+  "hero": {
+    "label": "ABOUT US",
+    "title": "An academy that transforms careers",
+    "description": "Ihsan IT Academy was founded to give everyone the opportunity to enter the IT industry. We don't just teach code—we teach the professional mindset and skills the market demands right now.",
+    "stats": {
+      "yearsValue": "2 years",
+      "yearsLabel": "On the market",
+      "practiceValue": "Practice",
+      "practiceLabel": "On real-world projects"
+    }
+  },
+  "mission": {
+    "label": "OUR MISSION",
+    "text": "To provide young people with high-quality IT education, reinforce their theoretical knowledge with hands-on experience, and help them grow into skilled professionals."
+  },
+  "principle": {
+    "label": "OUR PRINCIPLE",
+    "quote": "“We believe in quality over quantity!”"
+  },
+  "teachers": {
+    "label": "TEAM",
+    "title": "Our Mentors",
+    "list": [
+      {
+        "name": "Alena Nurbekova",
+        "role": "Frontend Mentor",
+        "experience": "9 years of experience"
+      },
+      {
+        "name": "Bektur Sultanov",
+        "role": "Backend Mentor",
+        "experience": "11 years of experience"
+      },
+      {
+        "name": "Maria Zhumabaeva",
+        "role": "UI/UX Mentor",
+        "experience": "8 years of experience"
+      }
+    ]
+  },
+  "process": {
+    "label": "PROCESS",
+    "title": "How the learning works",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Consultation",
+        "description": "Free meeting to choose the right course and format."
+      },
+      {
+        "number": "02",
+        "title": "Learning",
+        "description": "Practical sessions with a mentor 3 times a week."
+      },
+      {
+        "number": "03",
+        "title": "Projects",
+        "description": "Real-world tasks and case studies for your portfolio."
+      },
+      {
+        "number": "04",
+        "title": "Career",
+        "description": "Support with your resume, interviews, and job search."
+      }
+    ],
+    "ctaButton": "Book a consultation"
+  }
+},
+"contactPage": {
+  "hero": {
+    "label": "CONTACTS",
+    "title": "Get in touch with us",
+    "description": "Leave a request, and we will call you back within an hour, tell you about our courses, and answer all your questions."
+  },
+  "form": {
+    "title": "Submit a request",
+    "successMessage": "Your request has been received! We will get in touch with you.",
+    "nameLabel": "Your name *",
+    "namePlaceholder": "Aidana",
+    "phoneLabel": "Phone *",
+    "phonePlaceholder": "+996 700 000 000",
+    "courseLabel": "Course of interest *",
+    "coursePlaceholder": "Select a course",
+    "courses": {
+      "webDev": "Web Development",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "graphicDesign": "Graphic Design",
+      "uiux": "UI/UX Design"
+    },
+    "formatLabel": "Preferred learning format *",
+    "formatPlaceholder": "Select a learning format",
+    "formats": {
+      "offline": "Offline",
+      "online": "Online"
+    },
+    "messageLabel": "Additional information (optional)",
+    "messagePlaceholder": "Your additional notes or questions...",
+    "submitButton": "Send request"
+  },
+  "info": {
+    "title": "Contact information",
+    "addressLabel": "Address",
+    "addressValue": "230 Toktogul Street, Bishkek",
+    "phoneLabel": "Phone",
+    "phoneValue": "0555 059 303",
+    "scheduleLabel": "Hours",
+    "scheduleValue": "Monday–Saturday: 10:00–20:00, Sunday: Closed"
+  },
+  "social": {
+    "title": "Social media",
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "handle": "@ihsan_it_academy",
+    "phone": "0555 059 303"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "Is prior experience required?",
+        "answer": "No, most courses are designed for complete beginners."
+      },
+      {
+        "question": "How does the learning process work?",
+        "answer": "Classes take place three times a week offline. Online learning is also available."
+      },
+      {
+        "question": "Is installment payment available?",
+        "answer": "Yes, installments are available for up to six months."
+      },
+      {
+        "question": "Do you help with job placement?",
+        "answer": "Yes. Our career center helps with resumes, portfolios, and job hunting."
+      }
+    ]
+  }
+},
+"coursesPage": {
+  "intro": {
+    "eyebrow": "LEARNING",
+    "title": "Courses",
+    "count": "06",
+    "descriptionLine1": "Click a course for full details. Practice,",
+    "descriptionLine2": " mentorship, career."
+  },
+  "filtersAriaLabel": "Course level",
+  "coursesListAriaLabel": "Training courses",
+  "emptyMessage": "No courses available at this level yet.",
+  "filters": [
+    { "label": "All", "value": "all" },
+    { "label": "Beginner", "value": "beginner" },
+    { "label": "Intermediate", "value": "middle" },
+    { "label": "Advanced", "value": "advanced" }
+  ],
+  "card": {
+    "topicsAriaLabel": "Course topics",
+    "priceSuffix": "som/mo",
+    "detailsButton": "Learn more"
+  },
+  "modal": {
+    "closeAriaLabel": "Close window",
+    "durationLabel": "Duration",
+    "programTitle": "SYLLABUS",
+    "priceLabel": "For this course",
+    "enrollButton": "Enroll now"
+  },
+  "courses": [
+    {
+      "id": 1,
+      "number": "01",
+      "title": "Frontend Development",
+      "level": "Beginner",
+      "description": "The course teaches modern web development from building web pages to working with React.",
+      "topics": ["HTML and CSS", "JavaScript ES6+", "React + TypeScript", "Git and GitHub"],
+      "price": "12 000",
+      "duration": "6 mos",
+      "category": "beginner"
+    },
+    {
+      "id": 2,
+      "number": "02",
+      "title": "Backend Development",
+      "level": "Intermediate",
+      "description": "Learn to work with Node.js, Python, databases, and server-side applications.",
+      "topics": ["Python / Node.js", "REST API", "PostgreSQL", "Authentication"],
+      "price": "13 000",
+      "duration": "7 mos",
+      "category": "middle"
+    },
+    {
+      "id": 3,
+      "number": "03",
+      "title": "UI/UX Design",
+      "level": "Beginner",
+      "description": "Figma, design thinking, prototyping, and creating user-friendly interfaces.",
+      "topics": ["Figma", "UX Research", "Prototyping", "UI Design"],
+      "price": "10 000",
+      "duration": "4 mos",
+      "category": "beginner"
+    },
+    {
+      "id": 4,
+      "number": "04",
+      "title": "Data Science",
+      "level": "Advanced",
+      "description": "Machine learning, data analysis, and foundations of artificial intelligence.",
+      "topics": ["Python", "NumPy / Pandas", "ML / Deep Learning", "Data Analysis"],
+      "price": "15 000",
+      "duration": "8 mos",
+      "category": "advanced"
+    },
+    {
+      "id": 5,
+      "number": "05",
+      "title": "Cybersecurity",
+      "level": "Intermediate",
+      "description": "System protection, ethical hacking, and fundamentals of network security.",
+      "topics": ["Linux", "Pentesting", "CTF", "Network Security"],
+      "price": "14 000",
+      "duration": "6 mos",
+      "category": "middle"
+    },
+    {
+      "id": 6,
+      "number": "06",
+      "title": "Mobile Development",
+      "level": "Intermediate",
+      "description": "Fundamentals of building mobile applications for Android and iOS.",
+      "topics": ["React Native", "Flutter", "iOS and Android", "Working with APIs"],
+      "price": "13 000",
+      "duration": "5 mos",
+      "category": "middle"
+    }
+  ],
+  "internship": {
+    "eyebrow": "INTERNSHIP · 3 MONTHS",
+    "titleLine1": "Ihsan IT Academy — 3-Month Practical",
+    "titleLine2": "Internship Program",
+    "lead": "If you already have some experience and want to work on real projects, we offer a 3-month internship.",
+    "description": "The program helps people with IT education who lack practical experience gain hands-on skills in a real work environment, build a portfolio and resume, and prepare for employment.",
+    "whoCanJoinTitle": "Who can join?",
+    "whoCanJoinItems": [
+      "Graduates of other IT courses.",
+      "University graduates in IT fields.",
+      "Self-taught programmers.",
+      "People with basic knowledge who want to start working in IT."
+    ],
+    "activitiesTitle": "During the internship, participants:",
+    "activitiesItems": [
+      "Work on real IT projects and complete practical tasks.",
+      "Gain experience working in a team.",
+      "Build a personal portfolio and prepare a professional CV.",
+      "Prepare for technical interviews.",
+      "Get advice from mentors and support with job placement."
+    ],
+    "perksTitle": "Special opportunities",
+    "perksItems": [
+      "The internship is free for students who studied at Ihsan IT Academy.",
+      "Top participants may be considered for internships at IT companies in Kazakhstan.",
+      "High-performing interns may be offered a position at the academy itself.",
+      "Support is provided with job readiness, resumes, and portfolios."
+    ],
+    "notice": "Completing the internship does not guarantee employment. The academy supports participants in preparing and finding opportunities.",
+    "ctaButton": "Apply for internship"
+  }
+},
+"homePage": {
+  "hero": {
+    "label": "IT COURSES",
+    "titleLine1": "WE DON'T JUST",
+    "titleLine2": "TEACH —",
+    "titleHighlight": "WE TRAIN SPECIALISTS!",
+    "description": "Ihsan IT Academy is an educational center focused on training skilled IT professionals. We reinforce theoretical knowledge with practical tasks, real-world projects, and mentor support.",
+    "primaryBtn": "Enroll now",
+    "secondaryBtn": "Get a free consultation",
+    "stats": {
+      "yearsValue": "2 years",
+      "yearsLabel": "On the market",
+      "practiceValue": "Practice",
+      "practiceLabel": "On real-world projects"
+    }
+  },
+  "coursesSection": {
+    "label": "COURSES",
+    "title": "Choose your track",
+    "allLink": "All programs",
+    "metaDuration": "DURATION",
+    "metaLevel": "LEVEL",
+    "metaPrice": "PRICE",
+    "list": [
+      {
+        "number": "01",
+        "icon": "⚛",
+        "title": "Frontend Development",
+        "description": "HTML, CSS, JavaScript, React — from zero to your first job.",
+        "duration": "6 mos",
+        "level": "Beginner",
+        "price": "12 000 som/mo"
+      },
+      {
+        "number": "02",
+        "icon": "▦",
+        "title": "Backend Development",
+        "description": "Node.js, Python, databases, and server architecture.",
+        "duration": "7 mos",
+        "level": "Intermediate",
+        "price": "13 000 som/mo"
+      },
+      {
+        "number": "03",
+        "icon": "✎",
+        "title": "UI/UX Design",
+        "description": "Figma, design thinking, prototyping, and user experience.",
+        "duration": "4 mos",
+        "level": "Beginner",
+        "price": "10 000 som/mo"
+      },
+      {
+        "number": "04",
+        "icon": "▥",
+        "title": "Data Science",
+        "description": "Machine learning, data analysis, and neural networks.",
+        "duration": "8 mos",
+        "level": "Advanced",
+        "price": "15 000 som/mo"
+      },
+      {
+        "number": "05",
+        "icon": "⬡",
+        "title": "Cybersecurity",
+        "description": "System protection, ethical hacking, and network security.",
+        "duration": "6 mos",
+        "level": "Intermediate",
+        "price": "14 000 som/mo"
+      },
+      {
+        "number": "06",
+        "icon": "▯",
+        "title": "Mobile Development",
+        "description": "React Native and Flutter for building mobile applications.",
+        "duration": "5 mos",
+        "level": "Intermediate",
+        "price": "13 000 som/mo"
+      }
+    ]
+  },
+  "internship": {
+    "label": "INTERNSHIP · 3 MONTHS",
+    "title": "Ihsan IT Academy — 3-Month Practical Internship Program",
+    "description": "3-month hands-on internship: real projects, teamwork, portfolio and resume building. Free for Ihsan IT Academy students.",
+    "features": [
+      "✓ Real IT projects",
+      "✓ Teamwork experience",
+      "✓ Portfolio and resume",
+      "✓ Mentor support"
+    ],
+    "primaryBtn": "Apply for internship",
+    "secondaryBtn": "Learn more"
+  },
+  "offer": {
+    "label": "SPECIAL OFFER",
+    "title": "Visit our office and enroll — get 10% off",
+    "description": "Anyone who visits the academy office in person, gets a consultation, and enrolls receives a 10% discount.",
+    "button": "Full details"
+  },
+  "advantages": {
+    "label": "ADVANTAGES",
+    "title": "Our advantages",
+    "items": [
+      { "number": "01", "text": "Free English language classes." },
+      { "number": "02", "text": "Personal development lessons: communication, time management, responsibility, and teamwork." },
+      { "number": "03", "text": "Online meetups with developers working abroad." },
+      { "number": "04", "text": "Free internship for students of the academy." },
+      { "number": "05", "text": "Hands-on projects and portfolio building." },
+      { "number": "06", "text": "Resume writing, interview preparation, and job placement support." },
+      { "number": "07", "text": "Recommendations for top candidates to intern at IT companies in Kazakhstan." },
+      { "number": "08", "text": "Additional training on AI tools and modern technologies." }
+    ]
+  },
+  "teachers": {
+    "label": "TEACHERS",
+    "title": "Our Mentors",
+    "allLink": "All mentors",
+    "skillsTitle": "Specialization",
+    "enrollBtn": "Enroll in course",
+    "list": [
+      {
+        "experience": "9 YEARS OF EXPERIENCE",
+        "name": "Alena Nurbekova",
+        "role": "Frontend Mentor",
+        "description": "Helps students build modern interactive interfaces with React and TypeScript. Teaches architecture, testing, and production practices.",
+        "skills": ["React", "TypeScript", "Next.js", "Web Animation"]
+      },
+      {
+        "experience": "11 YEARS OF EXPERIENCE",
+        "name": "Bektur Sultanov",
+        "role": "Backend Mentor",
+        "description": "Specialist in server technologies and architecture. Helps students build fast and reliable APIs for real-world projects.",
+        "skills": ["Node.js", "Python", "PostgreSQL", "REST API"]
+      },
+      {
+        "experience": "8 YEARS OF EXPERIENCE",
+        "name": "Maria Zhumabaeva",
+        "role": "UI/UX Mentor",
+        "description": "Teaches user experience, prototyping, and visual design so graduates' projects have a polished, professional look.",
+        "skills": ["Figma", "UX Research", "Prototyping", "Design Systems"]
+      }
+    ]
+  },
+  "consultation": {
+    "label": "FREE CONSULTATION",
+    "title": "Ready to start your IT career?",
+    "descriptionLine1": "Sign up — we will choose a course tailored",
+    "descriptionLine2": "to your goals and current skill level.",
+    "button": "Sign up for free"
+  }
+},
+"oppoPage": {
+  "heading": {
+    "label": "OPPORTUNITIES",
+    "title": "Our Opportunities",
+    "subtitle": "Special discounts and social opportunities."
+  },
+  "socialDiscount": {
+    "badge": "15%",
+    "title": "Social Discount",
+    "description": "A 15% discount is available for the following categories of citizens:",
+    "benefits": [
+      "Parents from large families.",
+      "People with disabilities.",
+      "Citizens living in mountainous regions.",
+      "Employees of public institutions."
+    ]
+  },
+  "officeDiscount": {
+    "badge": "10%",
+    "title": "For In-Office Registrations",
+    "description": "Anyone who visits the academy office in person, gets information, and registers receives a 10% discount.",
+    "addressLabel": "Address",
+    "addressValue": "230 Toktogul Street, Bishkek"
+  },
+  "info": {
+    "title": "How to get a discount",
+    "description": "To receive a discount, you must provide a document confirming eligibility for the relevant category. The discount is applied after the administration verifies the documents."
+  },
+  "ctaButton": "Get a free consultation"
+},
+"teachersPage": {
+  "heading": {
+    "label": "TEAM",
+    "title": "Our Mentors",
+    "description": "Mentors with real industry experience. They don't just teach—they help you build a career."
+  },
+  "skillsTitle": "Specialization",
+  "enrollButton": "Enroll",
+  "moreButton": "Learn more",
+  "list": [
+    {
+      "id": 1,
+      "experience": "9 YEARS OF EXPERIENCE",
+      "name": "Alena Nurbekova",
+      "position": "Frontend Mentor",
+      "description": "Helps students build modern interactive interfaces with React and TypeScript. Teaches architecture, testing, and production practices.",
+      "skills": ["React", "TypeScript", "Next.js", "Web Animation"]
+    },
+    {
+      "id": 2,
+      "experience": "11 YEARS OF EXPERIENCE",
+      "name": "Bektur Sultanov",
+      "position": "Backend Mentor",
+      "description": "Mentor in server technologies and architecture. Helps students build fast and reliable APIs for real-world projects.",
+      "skills": ["Node.js", "Python", "PostgreSQL", "REST API"]
+    },
+    {
+      "id": 3,
+      "experience": "8 YEARS OF EXPERIENCE",
+      "name": "Maria Zhumabaeva",
+      "position": "UI/UX Mentor",
+      "description": "Teaches user experience, prototyping, and visual design so graduates' projects have a polished, professional look.",
+      "skills": ["Figma", "UX Research", "Prototyping", "Design Systems"]
+    }
+  ],
+  "cta": {
+    "label": "READY TO START?",
+    "title": "Learn from the best",
+    "description": "Book a consultation — we will match you with a mentor and course based on your goals.",
+    "button": "Free consultation"
+  }
+}
+}

@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import {
   MapPin,
@@ -17,6 +18,8 @@ import {
 import "./Footer.css";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -39,8 +42,7 @@ const Footer = () => {
             </Link>
 
             <p className="footer-description">
-              Бишкектеги жаңы муундун IT академиясы.
-              Келечектин кесиптерин үйрөтөбүз.
+              {t("footer.description")}
             </p>
 
             {/* SOCIAL LINKS */}
@@ -81,39 +83,39 @@ const Footer = () => {
 
           {/* NAVIGATION */}
           <div className="footer-column">
-            <h3>Навигация</h3>
+            <h3>{t("footer.navigation")}</h3>
 
             <ul>
-              <li><Link to="/">Башкы бет</Link></li>
-              <li><Link to="/courses">Курстар</Link></li>
-              <li><Link to="/about">Биз жөнүндө</Link></li>
-              <li><Link to="/features">Мүмкүнчүлүктөр</Link></li>
-              <li><Link to="/teachers">Мугалимдер</Link></li>
-              <li><Link to="/contacts">Байланыш</Link></li>
+              <li><Link to="/">{t("home")}</Link></li>
+              <li><Link to="/courses">{t("courses")}</Link></li>
+              <li><Link to="/about">{t("about")}</Link></li>
+              <li><Link to="/features">{t("features")}</Link></li>
+              <li><Link to="/teachers">{t("teachers")}</Link></li>
+              <li><Link to="/contacts">{t("contacts")}</Link></li>
             </ul>
           </div>
 
           {/* COURSES */}
           <div className="footer-column">
-            <h3>Курстар</h3>
+            <h3>{t("footer.courses")}</h3>
 
             <ul>
-              <li><Link to="/courses">Frontend иштеп чыгуу</Link></li>
-              <li><Link to="/courses">Backend иштеп чыгуу</Link></li>
-              <li><Link to="/courses">UI/UX Дизайн</Link></li>
-              <li><Link to="/courses">Data Science</Link></li>
-              <li><Link to="/courses">Киберкоопсуздук</Link></li>
-              <li><Link to="/courses">Мобилдик иштеп чыгуу</Link></li>
+              <li><Link to="/courses">{t("footer.frontend")}</Link></li>
+              <li><Link to="/courses">{t("footer.backend")}</Link></li>
+              <li><Link to="/courses">{t("footer.uiux")}</Link></li>
+              <li><Link to="/courses">{t("footer.dataScience")}</Link></li>
+              <li><Link to="/courses">{t("footer.cybersecurity")}</Link></li>
+              <li><Link to="/courses">{t("footer.mobile")}</Link></li>
             </ul>
           </div>
 
           {/* CONTACTS */}
           <div className="footer-column footer-contacts">
-            <h3>Байланыш</h3>
+            <h3>{t("contacts")}</h3>
 
             <div className="contact-item">
               <MapPin size={17} />
-              <span>Бишкек ш., Токтогул көч., 230</span>
+              <span>{t("footer.address")}</span>
             </div>
 
             <a
@@ -126,7 +128,7 @@ const Footer = () => {
 
             <div className="contact-item">
               <Clock size={17} />
-              <span>Дш-Иш: 10:00–20:00, Жк: эс алуу</span>
+              <span>{t("footer.schedule")}</span>
             </div>
           </div>
 
@@ -135,10 +137,10 @@ const Footer = () => {
         {/* BOTTOM */}
         <div className="footer-bottom">
           <p>
-            © 2026 Ihsan IT Academy. Бардык укуктар корголгон.
+            {t("footer.copyright")}
           </p>
 
-          <span>Бишкек, Кыргызстан KG</span>
+          <span>{t("footer.location")}</span>
         </div>
 
       </div>

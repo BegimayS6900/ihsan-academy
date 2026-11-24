@@ -1,8 +1,9 @@
-
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import "./ContactPage.css";
 
 const ContactPage = () => {
+  const { t, i18n } = useTranslation();
   const pageRef = useRef(null);
 
   const [formData, setFormData] = useState({
@@ -14,6 +15,8 @@ const ContactPage = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  const faqItems = t("contactPage.faq.items", { returnObjects: true }) || [];
 
   useEffect(() => {
     const container = pageRef.current;
@@ -54,7 +57,7 @@ const ContactPage = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [i18n.language]);
 
   const handleChange = (e) => {
     setFormData({
@@ -83,33 +86,30 @@ const ContactPage = () => {
       <div className="contact-container">
 
         <section className="contact-hero">
-          <span className="contact-label">БАЙЛАНЫШ</span>
-          <h1>Биз менен байланышыңыз</h1>
-          <p>
-            Өтүнүч калтырыңыз, бир саат ичинде чалып,
-            курстар жөнүндө айтып, бардык суроолорго жооп беребиз.
-          </p>
+          <span className="contact-label">{t("contactPage.hero.label")}</span>
+          <h1>{t("contactPage.hero.title")}</h1>
+          <p>{t("contactPage.hero.description")}</p>
         </section>
 
         <section className="contact-content">
 
           <div className="contact-form-card">
-            <h2>Өтүнүч калтыруу</h2>
+            <h2>{t("contactPage.form.title")}</h2>
 
             {submitted && (
               <div className="success-message">
-                Өтүнүчүңүз кабыл алынды! Биз сиз менен байланышабыз.
+                {t("contactPage.form.successMessage")}
               </div>
             )}
 
             <form onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Атыңыз *</label>
+                  <label>{t("contactPage.form.nameLabel")}</label>
                   <input
                     type="text"
                     name="name"
-                    placeholder="Айдана"
+                    placeholder={t("contactPage.form.namePlaceholder")}
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -117,11 +117,11 @@ const ContactPage = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>Телефон *</label>
+                  <label>{t("contactPage.form.phoneLabel")}</label>
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="+996 700 000 000"
+                    placeholder={t("contactPage.form.phonePlaceholder")}
                     value={formData.phone}
                     onChange={handleChange}
                     required
@@ -130,41 +130,55 @@ const ContactPage = () => {
               </div>
 
               <div className="form-group">
-                <label>Кызыккан курс *</label>
+                <label>{t("contactPage.form.courseLabel")}</label>
                 <select
                   name="course"
                   value={formData.course}
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Курс тандаңыз</option>
-                  <option value="Web Development">Web Development</option>
-                  <option value="Frontend">Frontend</option>
-                  <option value="Backend">Backend</option>
-                  <option value="Graphic Design">Graphic Design</option>
-                  <option value="UI/UX Design">UI/UX Design</option>
+                  <option value="">{t("contactPage.form.coursePlaceholder")}</option>
+                  <option value="Web Development">
+                    {t("contactPage.form.courses.webDev")}
+                  </option>
+                  <option value="Frontend">
+                    {t("contactPage.form.courses.frontend")}
+                  </option>
+                  <option value="Backend">
+                    {t("contactPage.form.courses.backend")}
+                  </option>
+                  <option value="Graphic Design">
+                    {t("contactPage.form.courses.graphicDesign")}
+                  </option>
+                  <option value="UI/UX Design">
+                    {t("contactPage.form.courses.uiux")}
+                  </option>
                 </select>
               </div>
 
               <div className="form-group">
-                <label>Окуу форматы боюнча каалооңуз *</label>
+                <label>{t("contactPage.form.formatLabel")}</label>
                 <select
                   name="format"
                   value={formData.format}
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Окуу форматын тандаңыз</option>
-                  <option value="Офлайн">Офлайн</option>
-                  <option value="Онлайн">Онлайн</option>
+                  <option value="">{t("contactPage.form.formatPlaceholder")}</option>
+                  <option value="Офлайн">
+                    {t("contactPage.form.formats.offline")}
+                  </option>
+                  <option value="Онлайн">
+                    {t("contactPage.form.formats.online")}
+                  </option>
                 </select>
               </div>
 
               <div className="form-group">
-                <label>Кошумча маалымат (милдеттүү эмес)</label>
+                <label>{t("contactPage.form.messageLabel")}</label>
                 <textarea
                   name="message"
-                  placeholder="Кошумча каалоолоруңуз же суроолоруңуз..."
+                  placeholder={t("contactPage.form.messagePlaceholder")}
                   value={formData.message}
                   onChange={handleChange}
                   rows="5"
@@ -172,7 +186,7 @@ const ContactPage = () => {
               </div>
 
               <button type="submit" className="contact-submit">
-                <span>➤</span> Өтүнүч жөнөтүү
+                <span>➤</span> {t("contactPage.form.submitButton")}
               </button>
             </form>
           </div>
@@ -180,38 +194,37 @@ const ContactPage = () => {
           <div className="contact-sidebar">
 
             <div className="contact-info-card">
-              <h3>Байланыш маалыматы</h3>
+              <h3>{t("contactPage.info.title")}</h3>
 
               <div className="contact-info-item">
                 <div className="contact-icon">⌖</div>
                 <div>
-                  <span>Дарек</span>
-                  <p>Бишкек ш., Токтогул көч., 230</p>
+                  <span>{t("contactPage.info.addressLabel")}</span>
+                  <p>{t("contactPage.info.addressValue")}</p>
                 </div>
               </div>
 
               <div className="contact-info-item">
                 <div className="contact-icon">♧</div>
                 <div>
-                  <span>Телефон</span>
-                  <a href="tel:+996555059303">0555 059 303</a>
+                  <span>{t("contactPage.info.phoneLabel")}</span>
+                  <a href="tel:+996555059303">
+                    {t("contactPage.info.phoneValue")}
+                  </a>
                 </div>
               </div>
 
               <div className="contact-info-item">
                 <div className="contact-icon">◷</div>
                 <div>
-                  <span>Убакыт</span>
-                  <p>
-                    Дүйшөмбү–Ишемби: 10:00–20:00,
-                    Жекшемби: эс алуу күнү
-                  </p>
+                  <span>{t("contactPage.info.scheduleLabel")}</span>
+                  <p>{t("contactPage.info.scheduleValue")}</p>
                 </div>
               </div>
             </div>
 
             <div className="contact-social-card">
-              <h3>Социалдык тармактар</h3>
+              <h3>{t("contactPage.social.title")}</h3>
 
               <a
                 href="https://t.me/ihsan_it_academy"
@@ -221,8 +234,8 @@ const ContactPage = () => {
               >
                 <div className="social-icon">➤</div>
                 <div>
-                  <strong>Telegram</strong>
-                  <span>@ihsan_it_academy</span>
+                  <strong>{t("contactPage.social.telegram")}</strong>
+                  <span>{t("contactPage.social.handle")}</span>
                 </div>
               </a>
 
@@ -234,8 +247,8 @@ const ContactPage = () => {
               >
                 <div className="social-icon">◎</div>
                 <div>
-                  <strong>Instagram</strong>
-                  <span>@ihsan_it_academy</span>
+                  <strong>{t("contactPage.social.instagram")}</strong>
+                  <span>{t("contactPage.social.handle")}</span>
                 </div>
               </a>
 
@@ -247,8 +260,8 @@ const ContactPage = () => {
               >
                 <div className="social-icon">◉</div>
                 <div>
-                  <strong>WhatsApp</strong>
-                  <span>0555 059 303</span>
+                  <strong>{t("contactPage.social.whatsapp")}</strong>
+                  <span>{t("contactPage.social.phone")}</span>
                 </div>
               </a>
             </div>
@@ -257,41 +270,16 @@ const ContactPage = () => {
         </section>
 
         <section className="contact-faq">
-          <span className="contact-label">FAQ</span>
-          <h2>Көп берилүүчү суроолор</h2>
+          <span className="contact-label">{t("contactPage.faq.label")}</span>
+          <h2>{t("contactPage.faq.title")}</h2>
 
           <div className="faq-grid">
-
-            <div className="faq-card">
-              <h3>Алдын ала тажрыйба керекпи?</h3>
-              <p>
-                Жок, курстардын көбү жаңы баштагандарга ылайыктуу.
-              </p>
-            </div>
-
-            <div className="faq-card">
-              <h3>Окуу кандай өтөт?</h3>
-              <p>
-                Сабактар жумасына үч жолу офлайн өтөт.
-                Онлайн окуу да бар.
-              </p>
-            </div>
-
-            <div className="faq-card">
-              <h3>Бөлүп төлөөгө болобу?</h3>
-              <p>
-                Ооба, алты айга чейин бөлүп төлөнсө болот.
-              </p>
-            </div>
-
-            <div className="faq-card">
-              <h3>Жумуш табууга жардам бересиңерби?</h3>
-              <p>
-                Ооба. Карьера борбору резюме, портфолио даярдоого
-                жана жумуш издөөгө жардам берет.
-              </p>
-            </div>
-
+            {faqItems.map((item) => (
+              <div className="faq-card" key={item.question}>
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
 

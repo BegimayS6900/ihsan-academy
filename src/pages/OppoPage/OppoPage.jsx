@@ -1,16 +1,13 @@
-
 import React, { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import "./OppoPage.css";
 
-const benefits = [
-  "Көп балалуу үй-бүлөлөрдүн ата-энелери.",
-  "Ден соолугунун мүмкүнчүлүгү чектелген адамдар.",
-  "Тоолуу райондордо жашаган жарандар.",
-  "Мамлекеттик мекемелерде иштеген кызматкерлер.",
-];
-
 const OppoPage = () => {
+  const { t, i18n } = useTranslation();
   const pageRef = useRef(null);
+
+  const benefits =
+    t("oppoPage.socialDiscount.benefits", { returnObjects: true }) || [];
 
   useEffect(() => {
     const container = pageRef.current;
@@ -55,7 +52,7 @@ const OppoPage = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <main className="opportunities-page" ref={pageRef}>
@@ -64,14 +61,12 @@ const OppoPage = () => {
         {/* HEADING */}
         <div className="opportunities-heading">
           <span className="opportunities-label">
-            МҮМКҮНЧҮЛҮКТӨР
+            {t("oppoPage.heading.label")}
           </span>
 
-          <h1>Биздин мүмкүнчүлүктөр</h1>
+          <h1>{t("oppoPage.heading.title")}</h1>
 
-          <p>
-            Атайын жеңилдиктер жана социалдык мүмкүнчүлүктөр.
-          </p>
+          <p>{t("oppoPage.heading.subtitle")}</p>
         </div>
 
         {/* CARDS */}
@@ -80,12 +75,14 @@ const OppoPage = () => {
           {/* 15% */}
           <div className="opportunity-card">
             <div className="opportunity-card-header">
-              <span className="discount-number">15%</span>
-              <h2>Социалдык жеңилдик</h2>
+              <span className="discount-number">
+                {t("oppoPage.socialDiscount.badge")}
+              </span>
+              <h2>{t("oppoPage.socialDiscount.title")}</h2>
             </div>
 
             <p className="opportunity-description">
-              Төмөнкү категориядагы жарандар үчүн 15% жеңилдик каралган:
+              {t("oppoPage.socialDiscount.description")}
             </p>
 
             <ul className="benefits-list">
@@ -101,21 +98,24 @@ const OppoPage = () => {
           {/* 10% */}
           <div className="opportunity-card office-card">
             <div className="opportunity-card-header">
-              <span className="discount-number">10%</span>
-              <h2>Офиске келип катталгандар үчүн</h2>
+              <span className="discount-number">
+                {t("oppoPage.officeDiscount.badge")}
+              </span>
+              <h2>{t("oppoPage.officeDiscount.title")}</h2>
             </div>
 
             <p className="opportunity-description">
-              Академиянын офисине жеке келип, маалымат алып,
-              катталган адамдарга 10% жеңилдик берилет.
+              {t("oppoPage.officeDiscount.description")}
             </p>
 
             <div className="office-address">
               <span className="location-icon">⌖</span>
 
               <div>
-                <span className="address-label">Дарек</span>
-                <p>Бишкек ш., Токтогул көч., 230</p>
+                <span className="address-label">
+                  {t("oppoPage.officeDiscount.addressLabel")}
+                </span>
+                <p>{t("oppoPage.officeDiscount.addressValue")}</p>
               </div>
             </div>
           </div>
@@ -127,21 +127,16 @@ const OppoPage = () => {
           <div className="info-icon">▤</div>
 
           <div>
-            <h3>Жеңилдикти кантип алса болот</h3>
+            <h3>{t("oppoPage.info.title")}</h3>
 
-            <p>
-              Жеңилдик алуу үчүн тиешелүү категорияга таандык экенин
-              тастыктаган документ көрсөтүлүшү керек. Документтер
-              администрация тарабынан текшерилгенден кийин жеңилдик
-              колдонулат.
-            </p>
+            <p>{t("oppoPage.info.description")}</p>
           </div>
         </div>
 
         {/* CTA */}
         <div className="opportunities-action">
           <a href="/contacts" className="consultation-button">
-            Акысыз консультация алуу
+            {t("oppoPage.ctaButton")}
             <span>→</span>
           </a>
         </div>

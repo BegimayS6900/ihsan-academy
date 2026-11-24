@@ -1,38 +1,13 @@
 import React, { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import "./TeachersPage.css";
 
-const teachers = [
-  {
-    id: 1,
-    experience: "9 ЖЫЛДЫК ТАЖРЫЙБА",
-    name: "Алена Нурбекова",
-    position: "Frontend боюнча ментор",
-    description:
-      "Студенттерге React жана TypeScript менен заманбап интерфейстерди жасоого жардам берет. Архитектураны, тестирлөөнү жана production-мамилелерди үйрөтөт.",
-    skills: ["React", "TypeScript", "Next.js", "Web Animation"],
-  },
-  {
-    id: 2,
-    experience: "11 ЖЫЛДЫК ТАЖРЫЙБА",
-    name: "Бектур Султанов",
-    position: "Backend боюнча ментор",
-    description:
-      "Сервер технологиялары жана архитектура боюнча насаатчы. Студенттерге чыныгы долбоорлор үчүн тез жана ишенимдүү API курууга жардам берет.",
-    skills: ["Node.js", "Python", "PostgreSQL", "REST API"],
-  },
-  {
-    id: 3,
-    experience: "8 ЖЫЛДЫК ТАЖРЫЙБА",
-    name: "Мария Жумабаева",
-    position: "UI/UX боюнча ментор",
-    description:
-      "Бүтүрүүчүлөрдүн долбоорлору кесипкөй көрүнүшү үчүн колдонуучу тажрыйбасын, прототиптөөнү жана визуалдык дизайнды үйрөтөт.",
-    skills: ["Figma", "UX Research", "Prototyping", "Design Systems"],
-  },
-];
-
 const TeachersPage = () => {
+  const { t, i18n } = useTranslation();
   const pageRef = useRef(null);
+
+  const teachers =
+    t("teachersPage.list", { returnObjects: true }) || [];
 
   useEffect(() => {
     const container = pageRef.current;
@@ -72,22 +47,20 @@ const TeachersPage = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <main className="teachers-page" ref={pageRef}>
       <div className="teachers-container">
         {/* Heading */}
         <section className="teachers-heading">
-          <span className="teachers-label">КОМАНДА</span>
+          <span className="teachers-label">
+            {t("teachersPage.heading.label")}
+          </span>
 
-          <h1>Биздин окутуучулар</h1>
+          <h1>{t("teachersPage.heading.title")}</h1>
 
-          <p>
-            Тармакта чыныгы тажрыйбасы бар менторлор.
-            Алар жөн гана үйрөтпөстөн,
-            карьера курууга да жардам беришет.
-          </p>
+          <p>{t("teachersPage.heading.description")}</p>
         </section>
 
         {/* Teachers Cards */}
@@ -95,7 +68,7 @@ const TeachersPage = () => {
           {teachers.map((teacher, index) => (
             <article
               className="teacher-card"
-              key={teacher.id}
+              key={teacher.id || teacher.name}
               style={{ "--reveal-delay": `${index * 90}ms` }}
             >
               <div className="teacher-experience">
@@ -131,10 +104,10 @@ const TeachersPage = () => {
 
               {/* Skills */}
               <div className="teacher-skills">
-                <h3>Адистешүү</h3>
+                <h3>{t("teachersPage.skillsTitle")}</h3>
 
                 <div className="teacher-tags">
-                  {teacher.skills.map((skill) => (
+                  {(teacher.skills || []).map((skill) => (
                     <span className="teacher-tag" key={skill}>
                       {skill}
                     </span>
@@ -145,11 +118,11 @@ const TeachersPage = () => {
               {/* Buttons */}
               <div className="teacher-card-footer">
                 <a href="/contacts" className="teacher-enroll">
-                  Жазылуу
+                  {t("teachersPage.enrollButton")}
                 </a>
 
                 <a href="/contacts" className="teacher-more">
-                  Толугураак <span>→</span>
+                  {t("teachersPage.moreButton")} <span>→</span>
                 </a>
               </div>
             </article>
@@ -159,18 +132,15 @@ const TeachersPage = () => {
         {/* CTA Section */}
         <section className="teachers-cta">
           <span className="cta-label">
-            БАШТООГО ДАЯРСЫҢБЫ?
+            {t("teachersPage.cta.label")}
           </span>
 
-          <h2>Мыкты адамдардан үйрөн</h2>
+          <h2>{t("teachersPage.cta.title")}</h2>
 
-          <p>
-            Консультацияга жазылыңыз — максаттарыңызга
-            ылайык окутуучу жана курс тандайбыз.
-          </p>
+          <p>{t("teachersPage.cta.description")}</p>
 
           <a href="/contacts" className="teachers-cta-button">
-            Акысыз консультация
+            {t("teachersPage.cta.button")}
             <span>→</span>
           </a>
         </section>
