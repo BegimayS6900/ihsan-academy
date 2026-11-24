@@ -261,12 +261,12 @@ export default function CoursesPage() {
   const courses = useMemo(() => {
     const translated = t("coursesPage.courses", { returnObjects: true });
     return Array.isArray(translated) ? translated : [];
-  }, [t, i18n.language]);
+  }, [t]);
 
   const filters = useMemo(() => {
     const translated = t("coursesPage.filters", { returnObjects: true });
     return Array.isArray(translated) ? translated : [];
-  }, [t, i18n.language]);
+  }, [t]);
 
   const filteredCourses = useMemo(
     () =>
