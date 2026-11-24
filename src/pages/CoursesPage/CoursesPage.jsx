@@ -258,10 +258,15 @@ export default function CoursesPage() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedCourseId, setSelectedCourseId] = useState(null);
 
-  const courses =
-    t("coursesPage.courses", { returnObjects: true }) || [];
-  const filters =
-    t("coursesPage.filters", { returnObjects: true }) || [];
+  const courses = useMemo(() => {
+    const translated = t("coursesPage.courses", { returnObjects: true });
+    return Array.isArray(translated) ? translated : [];
+  }, [t, i18n.language]);
+
+  const filters = useMemo(() => {
+    const translated = t("coursesPage.filters", { returnObjects: true });
+    return Array.isArray(translated) ? translated : [];
+  }, [t, i18n.language]);
 
   const filteredCourses = useMemo(
     () =>
