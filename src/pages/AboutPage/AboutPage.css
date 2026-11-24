@@ -1,0 +1,387 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.about-page {
+  background: #030b2c;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.about-container {
+  width: 100%;
+  max-width: 1230px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* HERO */
+
+.about-hero {
+  padding-top: 75px;
+  padding-bottom: 60px;
+}
+
+.section-label {
+  color: #a65aff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 13px;
+}
+
+.about-hero h1 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.hero-description {
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #f0f1ff;
+}
+
+.stats {
+  display: flex;
+  gap: 17px;
+  margin-top: 58px;
+}
+
+.stat-card {
+  width: 280px;
+  min-height: 108px;
+  border-radius: 17px;
+  background: #121735;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  background: #191d46;
+}
+
+.stat-card h2 {
+  color: #c89bff;
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.stat-card p {
+  font-size: 14px;
+}
+
+/* MISSION */
+
+.mission-section {
+  padding-bottom: 0;
+}
+
+.mission-card {
+  padding: 43px;
+  min-height: 205px;
+  background: #111735;
+  border: 1px solid #39317f;
+  border-radius: 18px;
+}
+
+.mission-card p {
+  max-width: 680px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* PRINCIPLE */
+
+.principle-section {
+  padding-top: 65px;
+}
+
+.principle-card {
+  padding: 43px;
+  min-height: 155px;
+  border: 1px solid #6040a6;
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(126, 69, 210, 0.18),
+      transparent 35%
+    ),
+    #171a40;
+}
+
+.principle-card h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+/* TEACHERS */
+
+.teachers-section {
+  padding-top: 60px;
+}
+
+.section-title {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+.teachers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.teacher-card {
+  min-height: 181px;
+  padding: 22px;
+  text-align: center;
+  border: 1px solid #333477;
+  border-radius: 17px;
+  background: #111735;
+  transition: 0.3s;
+}
+
+.teacher-card:hover {
+  transform: translateY(-6px);
+  border-color: #8c54db;
+}
+
+.teacher-avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4aaff;
+  background: #25204d;
+  border: 1px solid #7741bb;
+}
+
+.teacher-card h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.teacher-role {
+  font-size: 13px;
+  color: #c58aff;
+  margin-bottom: 6px;
+}
+
+.teacher-experience {
+  font-size: 13px;
+  color: #d4d8f5;
+}
+
+/* PROCESS */
+
+.process-section {
+  padding-top: 60px;
+  padding-bottom: 43px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+}
+
+.process-card {
+  min-height: 178px;
+  padding: 22px;
+  background: #111735;
+  border: 1px solid #333477;
+  border-radius: 17px;
+  transition: 0.3s;
+}
+
+.process-card:hover {
+  transform: translateY(-5px);
+  border-color: #8d51d7;
+}
+
+.process-number {
+  font-size: 38px;
+  font-weight: 700;
+  color: #46377e;
+  margin-bottom: 13px;
+}
+
+.process-card h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  color: #e2e5f8;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.consultation-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 58px;
+}
+
+.consultation-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  border-radius: 12px;
+  background: #0865fa;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(0, 90, 255, 0.2);
+  transition: 0.3s;
+}
+
+.consultation-btn:hover {
+  background: #347fff;
+  transform: translateY(-3px);
+}
+
+
+@media (max-width: 768px) {
+  .about-header {
+    height: auto;
+    position: relative;
+  }
+
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .about-hero {
+    padding-top: 55px;
+  }
+
+  .about-hero h1 {
+    font-size: 30px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .stats {
+    margin-top: 35px;
+  }
+
+  .stat-card {
+    width: 50%;
+    min-height: 95px;
+  }
+
+  .stat-card h2 {
+    font-size: 25px;
+  }
+
+  .mission-card,
+  .principle-card {
+    padding: 27px;
+  }
+
+  .mission-card p {
+    font-size: 17px;
+  }
+
+  .principle-card h2 {
+    font-size: 23px;
+  }
+
+  .teachers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .brand {
+    font-size: 13px;
+  }
+
+  .brand-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .register-btn,
+  .language-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .about-hero h1 {
+    font-size: 27px;
+  }
+
+  .stats {
+    gap: 10px;
+  }
+
+  .stat-card h2 {
+    font-size: 21px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+}

@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import HomePages from "./pages/HomePages/HomePages";
+import CoursesPage from "./pages/CoursesPage/CoursesPage";
+import AboutPage from "./pages/AboutPage/AboutPage";
+import OppoPage from "./pages/OppoPage/OppoPage";
+import TeachersPage from "./pages/TeachersPage/TeachersPage";
+import ContactPage from "./pages/Contacts/ContactPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<HomePages/>} />
+        <Route path="/courses" element={<CoursesPage/>} />
+        <Route path="/about" element={<AboutPage/>}/>
+        <Route path="/features" element={<OppoPage/>}/>
+        <Route path="/teachers" element={<TeachersPage/>}/>
+        <Route path="/contacts" element={<ContactPage/>}/>
+
+      </Routes>
+
+      <Footer />
+    </>
   );
 }
 
